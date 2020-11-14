@@ -2,7 +2,7 @@
 /**
  * Timber theme class & other functions for Twig.
  *
- * @package Starter_Theme
+ * @package Shanley_Theme
  */
 
 // Define paths to Twig templates
@@ -26,7 +26,7 @@ Timber::$autoescape = false;
  * We're going to configure our theme inside of a subclass of Timber\Site
  * You can move this to its own file and include here via php's include("MySite.php")
  */
-class StarterTheme extends Timber\Site
+class ShanleyTheme extends Timber\Site
 {
   
     /** Add timber support. */
@@ -34,8 +34,8 @@ class StarterTheme extends Timber\Site
     {
         // timber stuff
         add_action('after_setup_theme', array( $this, 'theme_supports' ));
-        add_action('wp_enqueue_scripts', array( $this, 'starter_theme_enqueue_assets'));
-        add_action('widgets_init', array( $this, 'starter_custom_uikit_widgets_init'));
+        add_action('wp_enqueue_scripts', array( $this, 'shanley_theme_enqueue_assets'));
+        add_action('widgets_init', array( $this, 'shanley_custom_uikit_widgets_init'));
         add_filter('timber/context', array( $this, 'add_to_context' ));
         add_filter('timber/twig', array( $this, 'add_to_twig' ));
         add_action('init', array( $this, 'register_post_types' ));
@@ -59,27 +59,27 @@ class StarterTheme extends Timber\Site
         // Register widget areas
         if (function_exists('register_sidebar')) {
             register_sidebar(array(
-              'name' => esc_html__('Left Sidebar Area', 'starter-theme'),
+              'name' => esc_html__('Left Sidebar Area', 'shanley-theme'),
               'id' => 'sidebar-left',
-              'description' => esc_html__('Sidebar Area for Left Sidebar Templates, you can add multiple widgets here.', 'starter-theme'),
+              'description' => esc_html__('Sidebar Area for Left Sidebar Templates, you can add multiple widgets here.', 'shanley-theme'),
               'before_widget' => '',
               'after_widget' => '',
               'before_title' => '<h3 class="uk-heading-line uk-text-bold widget-title"><span>',
               'after_title' => '</span></h3>'
           ));
             register_sidebar(array(
-                'name' => esc_html__('Right Sidebar Area', 'starter-theme'),
+                'name' => esc_html__('Right Sidebar Area', 'shanley-theme'),
                 'id' => 'sidebar-right',
-                'description' => esc_html__('Sidebar Area for Right Sidebar Templates, you can add multiple widgets here.', 'starter-theme'),
+                'description' => esc_html__('Sidebar Area for Right Sidebar Templates, you can add multiple widgets here.', 'shanley-theme'),
                 'before_widget' => '',
                 'after_widget' => '',
                 'before_title' => '<h3 class="uk-heading-line uk-text-bold widget-title"><span>',
                 'after_title' => '</span></h3>'
             ));
             register_sidebar(array(
-                'name' => esc_html__('Main Footer Area', 'starter-theme'),
+                'name' => esc_html__('Main Footer Area', 'shanley-theme'),
                 'id' => 'sidebar-footer',
-                'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'starter-theme'),
+                'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'shanley-theme'),
                 'before_widget' => '',
                 'after_widget' => '',
                 'before_title' => '<h4 class="widget-title">',
@@ -92,8 +92,8 @@ class StarterTheme extends Timber\Site
     {
         // This theme uses wp_nav_menu() in one locations.
         register_nav_menus(array(
-            'main' => __('Main Menu', 'starter-theme'),
-            'mobile' => __('Mobile Menu', 'starter-theme'),
+            'main' => __('Main Menu', 'shanley-theme'),
+            'mobile' => __('Mobile Menu', 'shanley-theme'),
         ));
     }
 
@@ -183,30 +183,30 @@ class StarterTheme extends Timber\Site
         ));
 
         // add custom thumbs sizes.
-        add_image_size('starter-theme-featured-image-archive', 800, 300, true);
-        add_image_size('starter-theme-hero-image', 1138, 388, true);
-        add_image_size('starter-theme-post-slider-image', 600, 600, true);
+        add_image_size('shanley-theme-featured-image-archive', 800, 300, true);
+        add_image_size('shanley-theme-hero-image', 1138, 388, true);
+        add_image_size('shanley-theme-post-slider-image', 600, 600, true);
         
-        load_theme_textdomain( 'starter-wp-theme', get_template_directory() . '/languages' );
+        load_theme_textdomain( 'shanley-wp-theme', get_template_directory() . '/languages' );
     }
     
-    public function starter_theme_enqueue_assets()
+    public function shanley_theme_enqueue_assets()
     {
         // load infinite scroll on archive pages
         if (is_home() || is_archive() || is_search()) {
-            wp_enqueue_style('starter-theme-css', get_template_directory_uri() . '/assets/css/base.css');
-            wp_enqueue_script('starter-theme-js', get_template_directory_uri() . '/assets/js/main/main_scroll.js', '', '', false);
-            wp_enqueue_style('starter-theme-styles', get_stylesheet_uri());
+            wp_enqueue_style('shanley-theme-css', get_template_directory_uri() . '/assets/css/base.css');
+            wp_enqueue_script('shanley-theme-js', get_template_directory_uri() . '/assets/js/main/main_scroll.js', '', '', false);
+            wp_enqueue_style('shanley-theme-styles', get_stylesheet_uri());
         } else {
-            wp_enqueue_style('starter-theme-css', get_template_directory_uri() . '/assets/css/base.css');
-            wp_enqueue_script('starter-theme-js', get_template_directory_uri() . '/assets/js/main/main.js', '', '', false);
-            wp_enqueue_style('starter-theme-styles', get_stylesheet_uri());
+            wp_enqueue_style('shanley-theme-css', get_template_directory_uri() . '/assets/css/base.css');
+            wp_enqueue_script('shanley-theme-js', get_template_directory_uri() . '/assets/js/main/main.js', '', '', false);
+            wp_enqueue_style('shanley-theme-styles', get_stylesheet_uri());
         }
     }
     
-    public function starter_custom_uikit_widgets_init()
+    public function shanley_custom_uikit_widgets_init()
     {
-        register_widget("Starter_Theme_Custom_UIKIT_Widget_Class");
+        register_widget("Shanley_Theme_Custom_UIKIT_Widget_Class");
     }
 
     public function add_to_twig($twig)
@@ -218,4 +218,4 @@ class StarterTheme extends Timber\Site
     }
 }
 
-new StarterTheme();
+new ShanleyTheme();

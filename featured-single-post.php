@@ -3,7 +3,7 @@
  * Template Name: Featured Post
  * Template Post Type: post
  *
- * @package Starter_Theme
+ * @package Shanley_Theme
  */
  
 $context = Timber::context();

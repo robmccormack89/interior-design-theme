@@ -1,8 +1,8 @@
 <?php
 /**
- * Starter Theme functions and definitions
+ * Shanley Theme functions and definitions
  *
- * @package Starter_Theme
+ * @package Shanley_Theme
  */
 
 /**

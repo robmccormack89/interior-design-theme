@@ -2,7 +2,7 @@
 /**
  * Template Name: Left Sidebar Template
  *
- * @package Starter_Theme
+ * @package Shanley_Theme
  */
 
 $context = Timber::context();

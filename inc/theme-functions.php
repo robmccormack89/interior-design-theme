@@ -2,7 +2,7 @@
 /**
  * Theme functions & bits
  *
- * @package Starter_Theme
+ * @package Shanley_Theme
  */
 
 // get the current year, this is passed onto twig as a global variable in timber-functions.php
@@ -118,7 +118,7 @@ add_action('pre_get_posts', function ($q) {
 });
 
 // stuff to say we need timber activated!! see TGM Plugin activation library
-function starter_theme_register_required_plugins()
+function shanley_theme_register_required_plugins()
 {
     $plugins = array(
         array(
@@ -141,4 +141,4 @@ function starter_theme_register_required_plugins()
     );
     tgmpa($plugins, $config);
 }
-add_action('tgmpa_register', 'starter_theme_register_required_plugins');
+add_action('tgmpa_register', 'shanley_theme_register_required_plugins');

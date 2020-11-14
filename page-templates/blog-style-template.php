@@ -2,7 +2,7 @@
 /**
  * Template Name: Blog Style Template
  *
- * @package Starter_Theme
+ * @package Shanley_Theme
  */
 
  $context = Timber::context();
