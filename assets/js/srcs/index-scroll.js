@@ -14,6 +14,3 @@ window.UIkit = UIkit;
 
 // load infinite scroll
 window.InfiniteScroll = require('infinite-scroll');
-
-// You might require or import some other file of yours
-// require ('./ajax-search.js');

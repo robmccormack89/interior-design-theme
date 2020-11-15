@@ -19,10 +19,10 @@
         <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
       </div>
       {% else %}
-        <div class="uk-background-muted uk-height-large uk-cover-container uk-border-rounded">
+        <div class="uk-background-muted uk-height-large uk-cover-container ">
           <div class="uk-flex uk-flex-center uk-flex-middle uk-text-center uk-position-cover">
             <div>
-              <h1 class="uk-text-bold"><span>This is the Homepage Hero section</span></h1>
+              <h1>This is the Homepage Hero section</h1>
               <div class="uk-container uk-container-small"><p>No posts found. This section shows your most recent sticky post in a hero block. Add a post, make it sticky & don't forget to add a featured image!</p></div>
             </div>
           </div>
@@ -36,7 +36,7 @@
     <div class="uk-container">
       
       {% if home_featured is not empty %}
-      <h2 class="uk-heading-line uk-text-bold"><span>Featured Articles</span></h2>
+      <h2>Featured Articles</h2>
       <div uk-slider="velocity: 5">
         <div class="uk-position-relative">
           <div class="uk-slider-container">
@@ -56,8 +56,8 @@
         <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
       </div>
       {% else %}
-      <div class="uk-background-muted uk-padding uk-border-rounded">
-        <h2 class="uk-text-bold"><span>Featured Articles</span></h2>
+      <div class="uk-background-muted uk-padding ">
+        <h2><span>Featured Articles</h2>
         <p class="uk-margin-remove-bottom">No posts found. This section shows your next 3 sticky posts in a post carousel. Add 3 more posts, make them sticky & don't forget to add featured images!</p>
       </div>
       {% endif %}
@@ -71,15 +71,15 @@
         
         <div class="uk-article uk-width-2-3@m">
           {% if home_posts is not empty %}
-          <h3 class="uk-heading-line uk-text-bold"><span>More Articles</span></h3>
+          <h3>More Articles</h3>
           <div class="archive-posts">
             {% for post in home_posts %}
             {% include 'tease.twig' %}
             {% endfor %}
           </div>
           {% else %}
-          <div class="uk-background-muted uk-padding uk-border-rounded">
-            <h3 class="uk-text-bold"><span>More Articles</span></h3>
+          <div class="uk-background-muted uk-padding ">
+            <h3><span>More Articles</h3>
             <p class="uk-margin-remove-bottom">No posts found. This section shows your 4 most recent non-sticky posts. Add some more posts, don't make them sticky & add featured images!</p>
           </div>
           {% endif %}

@@ -22,7 +22,7 @@
               </div>
           {% endif %}
           <label for="comment-form-box" class="uk-hidden">Comment Form</label>
-          <textarea id="comment-form-box" class="uk-textarea uk-border-rounded" placeholder="Leave a comment..." name="comment" cols="60" rows="8" placeholder="Your Comment:"></textarea>
+          <textarea id="comment-form-box" class="uk-textarea " placeholder="Leave a comment..." name="comment" cols="60" rows="8" placeholder="Your Comment:"></textarea>
           <input name="comment_post_ID" value="{{ post.id }}" type="hidden">
           <input name="comment_parent"  value="{{ comment.ID|default('0') }}" type="hidden">
           <div class="uk-margin-top">

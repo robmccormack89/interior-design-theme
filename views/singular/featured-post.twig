@@ -6,7 +6,7 @@
   <article id="post-{{post.ID}}" class="uk-article {{post.class}}">
 
     <div class="uk-container uk-container-xsmall uk-section uk-section-xsmall">
-      <h1 class="uk-text-bold uk-h1 uk-margin-remove-adjacent uk-margin-remove-top ">{{ post.title }}</h1>
+      <h1 class="uk-h1 uk-margin-remove-adjacent uk-margin-remove-top ">{{ post.title }}</h1>
       <p class="uk-article-meta ">Written on {{post.date | date}}. Posted in 
         {% for category in post.categories %}
           {% if not loop.last %}
@@ -36,7 +36,7 @@
 {% if related_articles|length > 2 %}
 <section class="uk-section home-featured-section">
   <div class="uk-container">
-    <h2 class="uk-heading-line uk-text-bold"><span>Related Articles</span></h2>
+    <h2>Related Articles</h2>
     <div uk-slider="velocity: 5">
       <div class="uk-position-relative">
         <div class="uk-slider-container">

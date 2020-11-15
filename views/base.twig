@@ -4,27 +4,27 @@
   <meta charset="{{site.charset}}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{ function('wp_head') }}
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
   </head>
   
   <style>
-  
-    /* UIKit based resonsive breakpoints */
-    @media only screen and (max-width:479px) {
-      .tease-feature-related {
-        max-height: 200px;
-        width: 100%;
-        object-fit: cover;
-      }
+    html {
+        font-family: 'Work Sans', sans-serif;
     }
-
-    @media only screen and (min-device-width:480px) and (max-device-width:767px) {
-      .tease-feature-related {
-        max-height: 300px;
-        width: 100%;
-        object-fit: cover;
-      }
+    .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge, .uk-heading-large, .uk-heading-medium, .uk-heading-small, .uk-heading-xlarge, h1, h2, h3, h4, h5, h6, .uk-logo {
+        font-family: 'Playfair Display', serif;
     }
-  
+    .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge, .uk-heading-large, .uk-heading-medium, .uk-heading-small, .uk-heading-xlarge, h1, h2, h3, h4, h5, h6, .uk-logo, .uk-link, a {
+        color: #474747;
+    }
+    .uk-link-toggle:focus .uk-link, .uk-link-toggle:hover .uk-link, .uk-link:hover, a:hover {
+        color: #474747;
+        text-decoration: none;
+    }
+    .uk-background-muted, .uk-section-muted, .uk-tile-muted {
+        background-color: #f8f7f3;
+    }
   </style>
   
   <body class="{{ body_class }} {{ posts_more_than_one_class }}" data-template="base.twig">

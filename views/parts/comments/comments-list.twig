@@ -1,5 +1,5 @@
 <li>
-    <article class="uk-comment uk-comment-primary uk-border-rounded uk-visible-toggle" tabindex="-1">
+    <article class="uk-comment uk-comment-primaryuk-visible-toggle" tabindex="-1">
       <header class="uk-comment-header uk-position-relative">
           <div class="uk-grid-medium uk-flex-middle" uk-grid>
               <div class="uk-width-auto">
@@ -17,7 +17,7 @@
       <div class="uk-comment-body">
           <p>{{comment.content}}</p>
           <div id="comment-reply-box{{ loop.index }}" class="" hidden>
-          <h4 class="uk-heading-line"><span>Reply to this Comment</span></h4>
+          <h4>Reply to this Comment</h4>
           {% include "comment-form.twig" %}
           </div>
       </div>
@@ -25,7 +25,7 @@
     {% for comment in comment.children %}
     <ul>
         <li>
-            <article class="uk-comment uk-comment-primary uk-border-rounded uk-visible-toggle" tabindex="-1">
+            <article class="uk-comment uk-comment-primaryuk-visible-toggle" tabindex="-1">
               <header class="uk-comment-header uk-position-relative">
                   <div class="uk-grid-medium uk-flex-middle" uk-grid>
                       <div class="uk-width-auto">
@@ -43,7 +43,7 @@
               <div class="uk-comment-body">
                   <p>{{comment.content}}</p>
                   <div id="comment-reply-nested2" class="" hidden>
-                  <h4 class="uk-heading-line"><span>Reply to this Comment</span></h4>
+                  <h4>Reply to this Comment</h4>
                   {% include "comment-form.twig" %}
                   </div>
               </div>
@@ -51,7 +51,7 @@
             {% for comment in comment.children %}
             <ul>
                 <li>
-                  <article class="uk-comment uk-comment-primary uk-border-rounded uk-visible-toggle" tabindex="-1">
+                  <article class="uk-comment uk-comment-primaryuk-visible-toggle" tabindex="-1">
                     <header class="uk-comment-header uk-position-relative">
                         <div class="uk-grid-medium uk-flex-middle" uk-grid>
                             <div class="uk-width-auto">
@@ -69,7 +69,7 @@
                     <div class="uk-comment-body">
                         <p>{{comment.content}}</p>
                         <div id="comment-reply-nested3" class="" hidden>
-                        <h4 class="uk-heading-line"><span>Reply to this Comment</span></h4>
+                        <h4>Reply to this Comment</h4>
                         {% include "comment-form.twig" %}
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                     {% for comment in comment.children %}
                     <ul>
                         <li>
-                          <article class="uk-comment uk-comment-primary uk-border-rounded uk-visible-toggle" tabindex="-1">
+                          <article class="uk-comment uk-comment-primaryuk-visible-toggle" tabindex="-1">
                             <header class="uk-comment-header uk-position-relative">
                                 <div class="uk-grid-medium uk-flex-middle" uk-grid>
                                     <div class="uk-width-auto">
@@ -95,7 +95,7 @@
                             <div class="uk-comment-body">
                                 <p>{{comment.content}}</p>
                                 <div id="comment-reply-nested4" class="" hidden>
-                                <h4 class="uk-heading-line"><span>Reply to this Comment</span></h4>
+                                <h4>Reply to this Comment</h4>
                                 {% include "comment-form.twig" %}
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                             {% for comment in comment.children %}
                             <ul>
                                 <li>
-                                  <article class="uk-comment uk-comment-primary uk-border-rounded uk-visible-toggle uk-padding" tabindex="-1">
+                                  <article class="uk-comment uk-comment-primaryuk-visible-toggle uk-padding" tabindex="-1">
                                     <header class="uk-comment-header uk-position-relative">
                                         <div class="uk-grid-medium uk-flex-middle" uk-grid>
                                             <div class="uk-width-auto">
@@ -121,7 +121,7 @@
                                     <div class="uk-comment-body">
                                         <p>{{comment.content}}</p>
                                         <div id="comment-reply-nested5" class="" hidden>
-                                        <h4 class="uk-heading-line"><span>Thread limit reached</span></h4>
+                                        <h4>Thread limit reached</h4>
                                         <p>Sorry, comment thread/reply limit has been reached! Try posting a new comment below.</p>
                                         </div>
                                     </div>
