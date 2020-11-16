@@ -2,23 +2,52 @@
 
 {% block content %}
 
-<div class="uk-section" data-template="single.twig">
-  <div class="uk-container">
-    <div class="uk-grid-large" uk-grid>
-      
-      {% if is_left_sidebar %}
-      {% include 'sidebar-left.twig' %}
-      {% endif %}
+<div data-template="single.twig">
+  
+  <div id="post-{{post.ID}}" class="slider-item {{ post.class }}">
+    <div class="uk-grid-match uk-grid-collapse uk-flex" uk-grid>
+      <div class="uk-width-4-5@m">
+          <div class="slider-image-wrap uk-position-relative">
+            {% if post.thumbnail is empty %}
+            <img class="home-slider-image" data-src="https://via.placeholder.com/1920x760?text=Add+featured+image" alt="" data-height data-width uk-img>
+            {% else %}
+            <img class="home-slider-image" data-src="{{ post.thumbnail.src('shanley-theme-hero-image') }}" alt="{{ post.thumbnail.alt }}" data-height data-width uk-img>
+            {% endif %}
+          </div>
+      </div>
+      <div class="slider-content single-header-content uk-background-muted uk-width-1-5@m uk-flex-first@m">
+        <div class="uk-flex uk-flex-center uk-flex-middle">
+          <div class="uk-text-left uk-width-3-4@m">
+            {% if post.post_type == "post" %}
+            <p class="uk-text-small uk-text-uppercase uk-text-bold">
+              {% for category in post.categories %}
+                {% if not loop.last %}
+                  <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>,
+                {% endif %}
+                {% if loop.last %}
+                  <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>
+                {% endif %}
+              {% endfor %}
+            </p>
+            {% endif %}
+            <h2 class="uk-margin-remove">{{post.title}}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="uk-container uk-section">
+    <div class="uk-grid-collapse uk-flex" uk-grid>
     
-      <article id="post-{{post.ID}}" class="post-type-{{ post.post_type }} uk-article {{ article_width_class }} {{post.class}}">
+      <div class="uk-width-2-5@m uk-visibile@m"></div>
+      <article id="post-{{post.ID}}" class="post-type-{{ post.post_type }} uk-width-3-5@m uk-flex-right {{post.class}}">
         
-        <h1 class="uk-article-title">{{ post.title }}</h1>
+        {{ post.content }}
         
-        {% if post.post_type == "post" %}
-        <p class="uk-article-meta">
-          Written on {{post.date | date}}.
-          Posted in 
-          {% for category in post.categories %}
+        <p class="uk-text-small uk-text-uppercase uk-text-bold uk-margin-large-top">
+          {% if post.post_type == "post" %}
+          Posted in: {% for category in post.categories %}
             {% if not loop.last %}
               <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>,
             {% endif %}
@@ -26,33 +55,16 @@
               <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>
             {% endif %}
           {% endfor %}
+          <br>
+          {% endif %}
+          <a href-"/">Go to Homepage</a>
         </p>
-        {% endif %}
-        
-        {% if post.thumbnail %}
-        <figure>
-          <img data-src="{{ post.thumbnail.src('shanley-theme-featured-image-archive') }}" width="800" height="300" alt="{{ post.thumbnail.alt }}" uk-img>
-        </figure>
-        {% endif %}
-
-        {{ post.content }}
-        
-        {% if post.comments and post.post_type == 'post' and if_comments_open %}
-        {% include 'comments.twig' %}
-        {% endif %}
 
       </article>
 
-      {% if is_right_sidebar %}
-      {% include 'sidebar.twig' %}
-      {% endif %}
-
     </div>
   </div>
+  
 </div>
-
-{% if if_posts_more_than_one and post.post_type == 'post' %}
-{% include 'bottom-bar.twig' %}
-{% endif %}
 
 {% endblock %}

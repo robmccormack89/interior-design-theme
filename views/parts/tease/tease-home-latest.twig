@@ -1,7 +1,7 @@
 <div id="post-{{post.ID}}" class="latest-item {{ post.class }}">
   
-  <div class="latest-image">
-    <a href="{{post.link}}" class=""><img class="" data-src="{{ post.thumbnail.src('shanley-theme-post-slider-image') }}" alt="{{ post.thumbnail.alt }}" data-height data-width uk-img></a>
+  <div class="latest-image single-image">
+    <a href="{{post.link}}" class=""><img class="" data-src="{{ post.thumbnail.src|resize(1403,750) }}" alt="{{ post.thumbnail.alt }}" data-height data-width uk-img></a>
   </div>
   
   <div class="latest-meta uk-margin-small-top">

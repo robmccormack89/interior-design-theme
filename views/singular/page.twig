@@ -1,1 +1,69 @@
-{% extends "single.twig" %}
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div data-template="single.twig">
+  
+  <div id="post-{{post.ID}}" class="slider-item {{ post.class }}">
+    <div class="uk-grid-match uk-grid-collapse uk-flex" uk-grid>
+      <div class="uk-width-4-5@m">
+          <div class="slider-image-wrap uk-position-relative">
+            {% if post.thumbnail is empty %}
+            <img class="home-slider-image" data-src="https://via.placeholder.com/1920x760?text=Add+featured+image" alt="" data-height data-width uk-img>
+            {% else %}
+            <img class="home-slider-image" data-src="{{ post.thumbnail.src('shanley-theme-hero-image') }}" alt="{{ post.thumbnail.alt }}" data-height data-width uk-img>
+            {% endif %}
+          </div>
+      </div>
+      <div class="slider-content single-header-content uk-background-muted uk-width-1-5@m uk-flex-first@m">
+        <div class="uk-flex uk-flex-center uk-flex-middle">
+          <div class="uk-text-left uk-width-3-4@m">
+            {% if post.post_type == "post" %}
+            <p class="uk-text-small uk-text-uppercase uk-text-bold">
+              {% for category in post.categories %}
+                {% if not loop.last %}
+                  <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>,
+                {% endif %}
+                {% if loop.last %}
+                  <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>
+                {% endif %}
+              {% endfor %}
+            </p>
+            {% endif %}
+            <h2 class="uk-margin-remove">{{post.title}}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="uk-container uk-section">
+    <div class="uk-grid-collapse uk-flex" uk-grid>
+    
+      <article id="post-{{post.ID}}" class="post-type-{{ post.post_type }} uk-width-3-5@m uk-flex-center {{post.class}}">
+        
+        {{ post.content }}
+        
+        <p class="uk-text-small uk-text-uppercase uk-text-bold uk-margin-large-top">
+          {% if post.post_type == "post" %}
+          Posted in: {% for category in post.categories %}
+            {% if not loop.last %}
+              <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>,
+            {% endif %}
+            {% if loop.last %}
+              <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>
+            {% endif %}
+          {% endfor %}
+          <br>
+          {% endif %}
+          <a href-"/">Go to Homepage</a>
+        </p>
+
+      </article>
+
+    </div>
+  </div>
+  
+</div>
+
+{% endblock %}
