@@ -3,16 +3,13 @@
 {% block content %}
 <div class="uk-section" data-template="index.twig">
   <div class="uk-container">
-    <div class="uk-grid-large" uk-grid>
-      
-      <div class="uk-article uk-width-2-3@m">
-        
-        <h1 class="uk-article-title uk-margin-large-bottom">{{ title }}</h1>
+    
+    <div>
         
         {% if posts is not empty %}
-        <div class="archive-posts">
+        <div class="archive-posts uk-child-width-1-2@s uk-child-width-1-3@m uk-grid-medium" uk-grid>
           {% for post in posts %}
-          {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+          {% include ['tease-main.twig'] %}
           {% endfor %}
         </div>
         {% else %}
@@ -23,10 +20,6 @@
         {% include 'pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
         {% endif %}
 
-      </div>
-      
-      {% include 'sidebar.twig' %}
-      
     </div>
   </div>
 </div>

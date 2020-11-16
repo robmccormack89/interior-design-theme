@@ -1,0 +1,34 @@
+<article id="post-{{post.ID}}" class="{{len|length}} uk-section uk-section-small uk-padding-remove-top {% if len|length == 1 %} uk-width-1-1 {% else %} uk-width-1-2 {% endif %} {{ post.class }} ">
+  <header>
+    
+    {% if post.get_thumbnail %}
+    <figure>
+      <a title="{{ post.thumbnail.title }}" href="{{post.link}}"><img data-src="{{ post.thumbnail.src|resize(1000,700) }}" data-width data-height alt="{{ post.thumbnail.alt }}" uk-img></a>
+      {% if post.thumbnail.caption %}
+      <figcaption class="uk-padding-small uk-text-muted uk-text-center tease-image-caption">{{ post.thumbnail.caption }}</figcaption>
+      {% endif %}
+    </figure>
+    {% endif %}
+    
+    
+  </header>
+  
+  <p class="uk-article-meta">
+    {% for category in post.categories %}
+      {% if not loop.last %}
+        <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>,
+      {% endif %}
+      {% if loop.last %}
+        <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>
+      {% endif %}
+    {% endfor %}
+  </p>
+  
+  <h2 class="masonry-post-title"><a title="{{post.title}}" class="uk-link-reset" href="{{post.link}}">{{post.title}}</a></h2>
+
+  <a href="{{post.link}}" class="uk-animation-toggle" tabindex="0">
+    <span>{{ post.preview.length(5).read_more('... ') }}</span><span>Continue Reading</span>
+    <span class="slider-link-icon uk-margin-small-left uk-animation-slide-left-small" uk-icon="arrow-right"></span>
+  </a>
+</article>
+<!-- /the post block -->

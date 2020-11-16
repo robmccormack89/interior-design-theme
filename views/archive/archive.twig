@@ -1,1 +1,61 @@
-{% extends "index.twig" %}
+{% extends "base.twig" %}
+
+{% block content %}
+<div class="uk-margin-large-bottom" data-template="index.twig">
+  
+  <div class="cat-upper"></div>
+  
+  <div class="cat-container uk-container">
+    <div>
+      
+        <div class="uk-container uk-container-xsmall">
+          <h1 class="uk-text-center">{{ title }}</h1>
+        
+              {% if sticky is not empty %}
+              <div class="first-sticky-posts uk-child-width-1-1 uk-grid-medium" uk-grid>
+              {% for post in first_sticky %}
+              {% include ['tease-first.twig'] %}
+              {% endfor %}
+              </div>
+
+              {% set len = sec_sticky %}
+              <div class="second-sticky-posts uk-grid-medium uk-flex-center" uk-grid>
+              {% for post in sec_sticky %}
+              {% include ['tease-sec.twig'] %}
+              {% endfor %}
+              </div>
+              {% endif %}
+
+              {% if sticky is empty %}
+
+              <div class="one-sticky-posts uk-child-width-1-1 uk-grid-medium" uk-grid>
+              {% for post in one_posts %}
+
+              {% include ['tease-first.twig'] %}
+
+              {% endfor %}
+              </div>
+              
+              {% endif %}
+
+              
+        </div>
+        
+          {% if the_posts is not empty %}
+          <div class="archive-posts uk-margin-top uk-child-width-1-2@s uk-child-width-1-3@m uk-grid-medium" uk-grid>
+            {% for post in the_posts %}
+            {% include ['tease-main.twig'] %}
+            {% endfor %}
+          </div>
+          {% else %}
+          <p class="uk-text-emphasis uk-padding uk-text-center">No non-sticky posts found. Add some non-sticky posts to this category!</p>
+          {% endif %}
+            
+          {% if is_paginated %}
+          {% include 'pagination.twig' with { pagination: posts.pagination({show_all: true, mid_size: 3, end_size: 2}) } %}
+          {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}

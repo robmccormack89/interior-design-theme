@@ -45,12 +45,14 @@
     <p class="infinite-scroll-error">No more posts to load</p>
   </div>
   
-  <p><button class="view-more-button uk-button uk-button-default uk-align-center">Load More</button></p>
+  <p>
+    <a class="view-more-button uk-flex uk-flex-middle uk-flex-center uk-animation-toggle" tabindex="0">Load More <span class="slider-link-icon uk-margin-small-left uk-animation-slide-left-small" uk-icon="more"></span></a>
+  </p>
 </div>
 <script>
   var infScroll = new InfiniteScroll( '.archive-posts', {
     path: '.next',
-    append: '.post',
+    append: '.item',
     button: '.view-more-button',
     // using button, disable loading on scroll 
     scrollThreshold: false,

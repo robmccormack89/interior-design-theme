@@ -45,7 +45,7 @@ if (!empty($sticky)) {
 }
 
 $home_posts_args = array(
-	'offset' => 3,
+	'offset' => 2,
 	'post_type' => 'post',
 	'posts_per_page'=>  12,
 	'post__not_in'=> $sticky,

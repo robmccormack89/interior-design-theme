@@ -37,17 +37,5 @@
     
     {{ function('wp_footer') }}
     
-    <script>
-        function slider_height_dynamically_set() {
-            activeslide = document.querySelector('.slider-item.uk-active');
-            slide_style = window.getComputedStyle(activeslide);
-            slide_container_height = slide_style.height
-            document.querySelector('.uk-slideshow-items').style.height = slide_container_height;
-        }
-        window.onload = function() {
-          slider_height_dynamically_set();
-        };
-    </script>
-    
   </body>
 </html>

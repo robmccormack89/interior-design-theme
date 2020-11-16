@@ -11,6 +11,23 @@ function currentYear()
     return date('Y');
 }
 
+// // remove sticky from main query
+// // this is key!
+// add_action('pre_get_posts', 'wpse74620_ignore_sticky');
+// // the function that does the work
+// function wpse74620_ignore_sticky($query)
+// {
+//     // sure we're were we want to be.
+//     if ($query->is_main_query() || $query->is_category())
+//         $query->set('ignore_sticky_posts', true);
+// }
+
+// Remove tags support from posts
+function myprefix_unregister_tags() {
+    unregister_taxonomy_for_object_type('post_tag', 'post');
+}
+add_action('init', 'myprefix_unregister_tags');
+
 // 
 function is_no_sidebar_template_width_class()
 {
