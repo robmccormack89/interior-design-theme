@@ -8,26 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
   </head>
   
-  <style>
-    html {
-        font-family: 'Work Sans', sans-serif;
-    }
-    .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge, .uk-heading-large, .uk-heading-medium, .uk-heading-small, .uk-heading-xlarge, h1, h2, h3, h4, h5, h6, .uk-logo {
-        font-family: 'Playfair Display', serif;
-    }
-    .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge, .uk-heading-large, .uk-heading-medium, .uk-heading-small, .uk-heading-xlarge, h1, h2, h3, h4, h5, h6, .uk-logo, .uk-link, a {
-        color: #474747;
-    }
-    .uk-link-toggle:focus .uk-link, .uk-link-toggle:hover .uk-link, .uk-link:hover, a:hover {
-        color: #474747;
-        text-decoration: none;
-    }
-    .uk-background-muted, .uk-section-muted, .uk-tile-muted {
-        background-color: #f8f7f3;
-    }
-  </style>
+  {% include 'styles.twig' %}
   
-  <body class="{{ body_class }} {{ posts_more_than_one_class }}" data-template="base.twig">
+  {% if posts_more_than_one %}
+  {% set body_attrs1 = 'slider_height_dynamically_set()'  %}
+  {% set body_attrs2 = 'slider_height_dynamically_set()' %}
+  {% endif %}
+  
+  <body class="{{ body_class }} {{ posts_more_than_one_class }}" onload="{{body_attrs1}}" onresize="{{body_attrs2}}" data-template="base.twig">
     
     <div id="SiteWrapper" class="site-wrapper">
       
@@ -48,6 +36,18 @@
     </div>
     
     {{ function('wp_footer') }}
+    
+    <script>
+        function slider_height_dynamically_set() {
+            activeslide = document.querySelector('.slider-item.uk-active');
+            slide_style = window.getComputedStyle(activeslide);
+            slide_container_height = slide_style.height
+            document.querySelector('.uk-slideshow-items').style.height = slide_container_height;
+        }
+        window.onload = function() {
+          slider_height_dynamically_set();
+        };
+    </script>
     
   </body>
 </html>

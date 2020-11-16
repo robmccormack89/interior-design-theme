@@ -25,7 +25,7 @@ if (!empty($sticky)) {
 	$home_hero_args = array(
 		'post_type' => 'post',
 		'post_status' => 'publish',
-		'posts_per_page'=>  1,
+		'posts_per_page'=>  3,
 		// 'p'   => $sticky[0],
 		'post__in'   => $sticky,
 		'ignore_sticky_posts' => 1,
@@ -33,24 +33,27 @@ if (!empty($sticky)) {
 		'order'   => 'DESC',
 	);
 	$context['home_hero'] = new Timber\PostQuery( $home_hero_args );
-	$home_featured_args = array(
+	$home_latest_args = array(
 		'post_type' => 'post',
 		'post_status' => 'publish',
-		'posts_per_page'=>  3,
-		'post__in'   => $sticky,
-		'offset' => 1,
-		'ignore_sticky_posts' => 1,
+		'posts_per_page'=>  2,
+		'post__not_in'   => $sticky,
 		'orderby' => 'date',
 		'order'   => 'DESC',
 	);
-	$context['home_featured'] = new Timber\PostQuery( $home_featured_args );
+	$context['home_latest'] = new Timber\PostQuery( $home_latest_args );
 }
+
 $home_posts_args = array(
- 'post_type' => 'post',
- 'posts_per_page'=>  4,
- 'post__not_in'=> $sticky,
+	'offset' => 3,
+	'post_type' => 'post',
+	'posts_per_page'=>  12,
+	'post__not_in'=> $sticky,
+ 
 );
-$context['home_posts'] = new Timber\PostQuery( $home_posts_args );
+$theposts = new Timber\PostQuery( $home_posts_args );
+
+$context['home_posts'] = $theposts;
 
 $templates = array( 'index.twig' );
 if ( is_home() && is_front_page() ) {

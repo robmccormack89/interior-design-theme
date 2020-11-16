@@ -1,9 +1,75 @@
-<footer class="the-footer uk-section uk-section-small uk-section-muted">
-  <div class="uk-container">
-  {% if sidebar_footer %}
-  	{{sidebar_footer}}
-  {% else %}
-  	<p class="uk-text-small uk-text-center">Copyright© {{current_year}} <a href="https://github.com/robmccormack89" title="My Github" target="_blank">Created by RMcCormack</a> | A Wordpress Theme built with <a href="http://getuikit.com" title="UIKIT" target="_blank"  >UIKit 3</a>  &amp; <a href="https://github.com/timber/timber" title="Timber WP" target="_blank">Timber WP</a></p>
-  {% endif %}
-  </div>
+<footer id="TheFooter" class="the-footer">
+    <div class="uk-section uk-section-small uk-section-secondary uk-light theme-border-bottom">
+        <div class="uk-container uk-container-large">
+            <div class="uk-child-width-1-2 uk-child-width-1-4@m" uk-grid="masonry: true;">
+                <div>
+                    {% if sidebar_footer_one %}
+              	    {{sidebar_footer_one}}
+                    {% else %}
+                    <h3>FooterOne</h3>
+                    <ul class="uk-nav uk-nav-default">
+                        <li><a href="#">Homepage</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Inquire</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    {% endif %}            
+                </div>
+                
+                <div>
+                    {% if sidebar_footer_two %}
+              	    {{sidebar_footer_two}}
+                    {% else %}
+                    <h3>FooterTwo</h3>
+                    <ul class="uk-nav uk-nav-default">
+                        <li><a href="#">Design Tips</a></li>
+                        <li><a href="#">Styling</a></li>
+                        <li><a href="#">Room Inspiration</a></li>
+                    </ul>
+                    {% endif %} 
+                </div>
+                
+                <div>
+                    {% if sidebar_footer_three %}
+                    {{sidebar_footer_three}}
+                    {% else %}
+                    <h3>FooterThree</h3>
+                    <ul class="uk-nav uk-nav-default">
+                        <li><a href="#">Watch</a></li>
+                        <li><a href="#">Netflix Show</a></li>
+                        <li><a href="#">Shop</a></li>
+                    </ul>
+                    {% endif %} 
+                </div>
+                
+                <div>
+                    {% if sidebar_footer_four %}
+                    {{sidebar_footer_four}}
+                    {% else %}
+                    <h3>FooterFour</h3>
+                    <p class="uk-text-small">Follow & Like us on Social Media</p>
+                    <ul class="uk-iconnav">
+                        <li><a href="#" uk-icon="icon: facebook; ratio: 0.8"></a></li>
+                        <li><a href="#" uk-icon="icon: instagram; ratio: 0.8"></a></li>
+                        <li><a href="#" uk-icon="icon: pinterest; ratio: 0.8"></a></li>
+                        <li><a href="#" uk-icon="icon: youtube; ratio: 0.8"></a></li>
+                    </ul>
+                    {% endif %} 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-section uk-section-small uk-section-secondary uk-light">
+        <div class="uk-container uk-container-large">
+          
+            {% if sidebar_footer_bottom %}
+            	{{sidebar_footer_bottom}}
+            {% else %}
+            	<p class="uk-text-small uk-text-center">No Content. Add a custom UIKIT HTML Widget to the Footer Bottom Widget Area.</p>
+            {% endif %}
+          
+        </div>
+    </div>
 </footer>

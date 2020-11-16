@@ -77,14 +77,81 @@ class ShanleyTheme extends Timber\Site
                 'after_title' => '</span></h3>'
             ));
             register_sidebar(array(
-                'name' => esc_html__('Main Footer Area', 'shanley-theme'),
-                'id' => 'sidebar-footer',
-                'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'shanley-theme'),
+                'name' => esc_html__('Header Top Area', 'shanley-theme'),
+                'id' => 'sidebar-header-top',
+                'description' => esc_html__('Header Top Widget Area; works best with the 1 Custom UiKit HTML Widget.', 'shanley-theme'),
                 'before_widget' => '',
                 'after_widget' => '',
-                'before_title' => '<h4 class="widget-title">',
+                'before_title' => '<h4 class="widget-title" hidden>',
                 'after_title' => '</h4>'
             ));
+            register_sidebar(array(
+                'name' => esc_html__('Bottom Footer Area', 'shanley-theme'),
+                'id' => 'sidebar-footer-bottom',
+                'description' => esc_html__('Bottom Footer Widget Area; works best with the 1 Custom UiKit HTML Widget.', 'shanley-theme'),
+                'before_widget' => '',
+                'after_widget' => '',
+                'before_title' => '<h4 class="widget-title" hidden>',
+                'after_title' => '</h4>'
+            ));
+            register_sidebar(array(
+                'name' => esc_html__('Footer One Area', 'shanley-theme'),
+                'id' => 'sidebar-footer-one',
+                'description' => esc_html__('Footer One Widget Area; works best with the 1 Custom UiKit HTML Widget.', 'shanley-theme'),
+                'before_widget' => '',
+                'after_widget' => '',
+                'before_title' => '<h3 class="widget-title">',
+                'after_title' => '</h3>'
+            ));
+            register_sidebar(array(
+                'name' => esc_html__('Footer Two Area', 'shanley-theme'),
+                'id' => 'sidebar-footer-two',
+                'description' => esc_html__('Footer Two Widget Area; works best with the 1 Custom UiKit HTML Widget.', 'shanley-theme'),
+                'before_widget' => '',
+                'after_widget' => '',
+                'before_title' => '<h3 class="widget-title">',
+                'after_title' => '</h3>'
+            ));
+            register_sidebar(array(
+                'name' => esc_html__('Footer Three Area', 'shanley-theme'),
+                'id' => 'sidebar-footer-three',
+                'description' => esc_html__('Footer Three Widget Area; works best with the 1 Custom UiKit HTML Widget.', 'shanley-theme'),
+                'before_widget' => '',
+                'after_widget' => '',
+                'before_title' => '<h3 class="widget-title">',
+                'after_title' => '</h3>'
+            ));
+            register_sidebar(array(
+                'name' => esc_html__('Footer Four Area', 'shanley-theme'),
+                'id' => 'sidebar-footer-four',
+                'description' => esc_html__('Footer Four Widget Area; works best with the 1 Custom UiKit HTML Widget.', 'shanley-theme'),
+                'before_widget' => '',
+                'after_widget' => '',
+                'before_title' => '<h3 class="widget-title">',
+                'after_title' => '</h3>'
+            ));
+            
+            
+            register_sidebar(array(
+                'name' => esc_html__('Home Dark One Area', 'shanley-theme'),
+                'id' => 'sidebar-home-one',
+                'description' => esc_html__('Home Dark One Widget Area; works best with the 1 Custom UiKit HTML Widget.', 'shanley-theme'),
+                'before_widget' => '',
+                'after_widget' => '',
+                'before_title' => '<h3 class="widget-title" hidden>',
+                'after_title' => '</h3>'
+            ));
+            register_sidebar(array(
+                'name' => esc_html__('Home Dark Two Area', 'shanley-theme'),
+                'id' => 'sidebar-home-two',
+                'description' => esc_html__('Home Dark Two Widget Area; works best with the 1 Custom UiKit HTML Widget.', 'shanley-theme'),
+                'before_widget' => '',
+                'after_widget' => '',
+                'before_title' => '<h3 class="widget-title" hidden>',
+                'after_title' => '</h3>'
+            ));
+            
+
         }
     }
 
@@ -130,7 +197,17 @@ class ShanleyTheme extends Timber\Site
         // add sidebars to them context
         $context['sidebar_left']  = Timber::get_widgets('Left Sidebar Area');
         $context['sidebar_right'] = Timber::get_widgets('Right Sidebar Area');
-        $context['sidebar_footer']   = Timber::get_widgets('Main Footer Area');
+        
+        $context['sidebar_home_one']  = Timber::get_widgets('Home Dark One Area');
+        $context['sidebar_home_two'] = Timber::get_widgets('Home Dark Two Area');
+        
+        $context['sidebar_header_top'] = Timber::get_widgets('Header Top Area');
+        
+        $context['sidebar_footer_bottom'] = Timber::get_widgets('Bottom Footer Area');
+        $context['sidebar_footer_one'] = Timber::get_widgets('Footer One Area');
+        $context['sidebar_footer_two'] = Timber::get_widgets('Footer Two Area');
+        $context['sidebar_footer_three'] = Timber::get_widgets('Footer Three Area');
+        $context['sidebar_footer_four'] = Timber::get_widgets('Footer Four Area');
       
         // if page template being used is no-sidebar, article width class sets to 1-1, otherwise its 2-3@s. theme-functions.php
         $context['article_width_class'] = is_no_sidebar_template_width_class();
@@ -184,7 +261,7 @@ class ShanleyTheme extends Timber\Site
 
         // add custom thumbs sizes.
         add_image_size('shanley-theme-featured-image-archive', 800, 300, true);
-        add_image_size('shanley-theme-hero-image', 1138, 388, true);
+        add_image_size('shanley-theme-hero-image', 951, 489, true);
         add_image_size('shanley-theme-post-slider-image', 600, 600, true);
         
         load_theme_textdomain( 'shanley-wp-theme', get_template_directory() . '/languages' );

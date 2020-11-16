@@ -1,0 +1,31 @@
+<div id="post-{{post.ID}}" class="latest-item {{ post.class }}">
+  
+  <div class="latest-image">
+    <a href="{{post.link}}" class=""><img class="" data-src="{{ post.thumbnail.src('shanley-theme-post-slider-image') }}" alt="{{ post.thumbnail.alt }}" data-height data-width uk-img></a>
+  </div>
+  
+  <div class="latest-meta uk-margin-small-top">
+    <p class="uk-text-small uk-text-uppercase uk-text-bold uk-margin-remove">
+      {% for category in post.categories %}
+        {% if not loop.last %}
+          <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>,
+        {% endif %}
+        {% if loop.last %}
+          <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>
+        {% endif %}
+      {% endfor %}
+    </p>
+  </div>
+  
+  <div class="latest-title uk-width-1-2@m">
+    <h2 class="uk-margin-remove">{{post.title}}</h2>
+  </div>
+  
+  <div class="latest-link uk-margin-bottom">
+      <a href="{{post.link}}" class="uk-animation-toggle" tabindex="0">
+        <span>{{ post.preview.length(5).read_more('... ') }}</span><span>Continue Reading</span>
+        <span class="slider-link-icon uk-margin-small-left uk-animation-slide-left-small" uk-icon="arrow-right"></span>
+      </a>
+  </div>
+  
+</div>

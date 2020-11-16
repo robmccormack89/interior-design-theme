@@ -1,6 +1,6 @@
 /* Global Custom Variables. What ever u want to use across the partialized files below */
-$theme_border: 1px solid #e5e5e5;
-$theme_border_light: 1px solid rgba(255,255,255,.2);
+$theme_border: 1px solid hsla(0,0%,59%,.5);
+$theme_border_light: 1px solid hsla(0,0%,100%,.5);
 
 // import your custom sass styles. you can partialize it how u like
 @import "assets/sass/partials/borders.scss";

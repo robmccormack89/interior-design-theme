@@ -3,27 +3,25 @@
 
 <div data-template="page-home.twig">
 
-  <section class="uk-section uk-section-small home-hero-section">
-    <div class="uk-container">
+  <section class="home-hero-section">
+    <div class="">
       
       {% if home_hero is not empty %}
-      <div class="uk-position-relative uk-visible-toggle uk-light" uk-slider>
+      <div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: fade; autoplay: true; autoplay-interval: 5000">
         
-        <ul class="uk-slider-items uk-child-width-1-1">
+        <ul class="uk-slideshow-items">
           {% for post in home_hero %}
           {% include 'tease-home-hero.twig' %}
           {% endfor %}
         </ul>
-        
-        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
       </div>
       {% else %}
-        <div class="uk-background-muted uk-height-large uk-cover-container ">
+        <div class="uk-height-large uk-cover-container">
           <div class="uk-flex uk-flex-center uk-flex-middle uk-text-center uk-position-cover">
             <div>
-              <h1>This is the Homepage Hero section</h1>
-              <div class="uk-container uk-container-small"><p>No posts found. This section shows your most recent sticky post in a hero block. Add a post, make it sticky & don't forget to add a featured image!</p></div>
+              <h1>This is the Hero Slider section</h1>
+              <div class="uk-container uk-container-small"><p>No posts found. This section shows your 3 most recent sticky posts in a Hero Slider. Add some posts, make them sticky & don't forget to add featured images!</p></div>
             </div>
           </div>
         </div>
@@ -32,66 +30,76 @@
     </div>
   </section>
 
-  <section class="uk-section home-featured-section">
-    <div class="uk-container">
-      
-      {% if home_featured is not empty %}
-      <h2>Featured Articles</h2>
-      <div uk-slider="velocity: 5">
-        <div class="uk-position-relative">
-          <div class="uk-slider-container">
-            
-            <ul class="uk-slider-items uk-child-width-1-2@m uk-grid uk-grid-medium news-slide">
-              {% for post in home_featured %}
-              {% include 'tease-home-featured.twig' %}
-              {% endfor %}
-            </ul>
-            
-          </div>
-          <div class="uk-visible@xl">
-            <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"><span class="uk-hidden">Previous</span></a>
-            <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"><span class="uk-hidden">Next</span></a>
-          </div>
-        </div>
-        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+  <section class="home-latest-section">
+    
+    <div class="latest-title theme-border-bottom">
+      <div class="uk-text-center uk-text-uppercase">
+        The Latest
       </div>
+    </div>
+    
+    <div class="uk-section uk-container">
+      {% if home_latest is not empty %}
+        <div class="uk-child-width-1-2@m uk-grid uk-grid-medium">
+          {% for post in home_latest %}
+          {% include 'tease-home-latest.twig' %}
+          {% endfor %}
+        </div>
       {% else %}
-      <div class="uk-background-muted uk-padding ">
-        <h2><span>Featured Articles</h2>
-        <p class="uk-margin-remove-bottom">No posts found. This section shows your next 3 sticky posts in a post carousel. Add 3 more posts, make them sticky & don't forget to add featured images!</p>
+      <div class="uk-padding uk-text-center">
+        <h2><span>Latest Posts</h2>
+        <p class="uk-margin-remove-bottom">No posts found. This section shows your next 2 non-sticky posts. Add 2 more posts & don't forget to add featured images!</p>
       </div>
       {% endif %}
+    </div>
     
+  </section>
+  
+  <section class="home-widgets-section uk-section uk-section-small uk-background-secondary uk-light">
+    <div class="uk-container uk-container-small">
+      <div class="uk-child-width-1-2@m uk-grid uk-flex uk-flex-middle" uk-grid>
+        <div>
+          <div class="uk-width-5-6@m">
+            {% if sidebar_home_one %}
+            {{sidebar_home_one}}
+            {% else %}
+            <h4 class="uk-margin-medium-bottom uk-margin-remove-top">Add some widgets,<br>
+              to the widgets area
+            </h4>
+            <hr>
+            <a href="#" class="uk-animation-toggle" tabindex="0">Link goes here
+              <span class="slider-link-icon uk-margin-small-left uk-animation-slide-left-small" uk-icon="arrow-right"></span>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+        <div>
+          {% if sidebar_home_two %}
+          {{sidebar_home_two}}
+          {% else %}
+          <img class="" data-src="http://uikitwp.robmccormack.me/wp-content/uploads/2020/11/studiomcgee_Holiday2020_080-951x489.jpg" alt="" data-height data-width uk-img>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="uk-section home-posts-section">
+  <section class="uk-section uk-section-small home-posts-section">
     <div class="uk-container">
-      <div class="uk-grid-large" uk-grid>
-        
-        <div class="uk-article uk-width-2-3@m">
-          {% if home_posts is not empty %}
-          <h3>More Articles</h3>
-          <div class="archive-posts">
-            {% for post in home_posts %}
-            {% include 'tease.twig' %}
-            {% endfor %}
-          </div>
-          {% else %}
-          <div class="uk-background-muted uk-padding ">
-            <h3><span>More Articles</h3>
-            <p class="uk-margin-remove-bottom">No posts found. This section shows your 4 most recent non-sticky posts. Add some more posts, don't make them sticky & add featured images!</p>
-          </div>
-          {% endif %}
-          
-          {% if is_paginated %}
-          {% include 'pagination.twig' %}
-          {% endif %}
-        </div>
-
-        {% include 'sidebar.twig' %}
-
+      
+      {% if home_posts is not empty %}
+      <div class="home-archive-posts uk-child-width-1-2@s {{the_mason_width}} uk-grid-small" uk-grid="">
+        {% for post in home_posts %}
+        {% include 'tease.twig' %}
+        {% endfor %}
       </div>
+      {% else %}
+      <div class="uk-padding uk-text-center">
+        <h3><span>More Articles</h3>
+        <p class="uk-margin-remove-bottom">No posts found. This section shows your next 12 most recent non-sticky posts. Add some more posts, don't make them sticky & add featured images!</p>
+      </div>
+      {% endif %}
+          
     </div>
   </section>
   

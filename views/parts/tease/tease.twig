@@ -1,26 +1,40 @@
-<article id="post-{{post.ID}}" class="uk-section uk-section-small uk-padding-remove-top {{ post.class }}">
+<article id="post-{{post.ID}}" class="uk-width-1-2@s 
+{% if loop.revindex == 1 or loop.revindex == 5 or loop.revindex == 9 or loop.revindex == 11 %}
+uk-width-1-2@m 
+{% else %}
+uk-width-1-4@m 
+{% endif %}
+home-mason-post uk-section uk-section-small uk-padding-remove-top {{loop.revindex}} {{ post.class }}">
   <header>
-    <h2 class="uk-margin-remove-adjacent uk-margin-small-bottom"><a title="{{post.title}}" class="uk-link-reset" href="{{post.link}}">{{post.title}}</a></h2>
-    <p class="uk-article-meta">Written on {{post.date | date}}. Posted in
-      {% for category in post.categories %}
-        {% if not loop.last %}
-          <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>,
-        {% endif %}
-        {% if loop.last %}
-          <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>
-        {% endif %}
-      {% endfor %}
-    </p>
-  </header>
-  {% if post.get_thumbnail %}
-  <figure>
-    <a title="{{ post.thumbnail.title }}" href="{{post.link}}"><img data-src="{{ post.thumbnail.src('shanley-theme-featured-image-archive') }}" width="800" height="300" alt="{{ post.thumbnail.alt }}" uk-img></a>
-    {% if post.thumbnail.caption %}
-    <figcaption class="uk-padding-small uk-text-muted uk-text-center tease-image-caption">{{ post.thumbnail.caption }}</figcaption>
+    
+    {% if post.get_thumbnail %}
+    <figure>
+      <a title="{{ post.thumbnail.title }}" href="{{post.link}}"><img data-src="{{ post.thumbnail.src|resize(640) }}" data-width data-height alt="{{ post.thumbnail.alt }}" uk-img></a>
+      {% if post.thumbnail.caption %}
+      <figcaption class="uk-padding-small uk-text-muted uk-text-center tease-image-caption">{{ post.thumbnail.caption }}</figcaption>
+      {% endif %}
+    </figure>
     {% endif %}
-  </figure>
-  {% endif %}
-  <p>{{ post.preview.read_more('') }}</p>
-  <a href="{{post.link}}" title="Read More" class="uk-button uk-button-default">Read More</a>
+    
+    
+  </header>
+  
+  <p class="uk-article-meta">
+    {% for category in post.categories %}
+      {% if not loop.last %}
+        <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>,
+      {% endif %}
+      {% if loop.last %}
+        <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>
+      {% endif %}
+    {% endfor %}
+  </p>
+  
+  <h2 class="masonry-post-title"><a title="{{post.title}}" class="uk-link-reset" href="{{post.link}}">{{post.title}}</a></h2>
+
+  <a href="{{post.link}}" class="uk-animation-toggle" tabindex="0">
+    <span>{{ post.preview.length(5).read_more('... ') }}</span><span>Continue Reading</span>
+    <span class="slider-link-icon uk-margin-small-left uk-animation-slide-left-small" uk-icon="arrow-right"></span>
+  </a>
 </article>
 <!-- /the post block -->

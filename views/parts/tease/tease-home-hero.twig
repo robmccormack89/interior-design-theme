@@ -1,12 +1,29 @@
-<li>
-  <div id="post-{{post.ID}}" class="uk-height-large uk-cover-containertheme-border {{ post.class }}">
-    <img data-src="{{ post.thumbnail.src('shanley-theme-hero-image') }}" alt="{{ post.thumbnail.alt }}" data-width data-height uk-cover uk-img>
-    <div class="uk-overlay uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle uk-light uk-text-center">
-      <div>
-        <span class="uk-label home-hero-label">Latest Featured Article</span>
-        <h1 class="uk-margin-top uk-margin-small-bottom uk-margin-remove-adjacent">{{post.title}}</h1>
-        <div class="uk-container uk-container-small">{{ post.preview.length(25).read_more('') }}</div>
-        <a href="{{post.link}}" class="uk-button uk-button-default uk-margin-top">Go to Article</a>
+<li id="post-{{post.ID}}" class="slider-item {{ post.class }}">
+  <div class="uk-child-width-1-2@m uk-grid-match uk-grid-collapse" uk-grid>
+    <a href="{{post.link}}">
+      <div class="slider-image-wrap uk-position-relative">
+        <img class="home-slider-image" data-src="{{ post.thumbnail.src('shanley-theme-hero-image') }}" alt="{{ post.thumbnail.alt }}" data-height data-width uk-img>
+      </div>
+    </a>
+    <div class="slider-content uk-background-muted">
+      <div class="uk-flex uk-flex-center uk-flex-middle uk-padding-large">
+        <div class="uk-text-left uk-width-1-2@m">
+          <p class="uk-text-small uk-text-uppercase uk-text-bold">
+            {% for category in post.categories %}
+              {% if not loop.last %}
+                <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>,
+              {% endif %}
+              {% if loop.last %}
+                <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>
+              {% endif %}
+            {% endfor %}
+          </p>
+          <h2 class="uk-margin-remove-top">{{post.title}}</h2>
+            <a href="{{post.link}}" class="uk-animation-toggle" tabindex="0">
+              <span>{{ post.preview.length(5).read_more('... ') }}</span><span>Continue Reading</span>
+              <span class="slider-link-icon uk-margin-small-left uk-animation-slide-left-small" uk-icon="arrow-right"></span>
+            </a>
+        </div>
       </div>
     </div>
   </div>

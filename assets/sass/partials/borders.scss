@@ -18,3 +18,39 @@
 .theme-border-left {
   border-left: $theme_border;
 }
+
+/* light borders */
+.uk-light .theme-border {
+  border: $theme_border_light;
+}
+.uk-light.theme-border {
+  border: $theme_border_light;
+}
+
+.uk-light .theme-border-top {
+  border-top: $theme_border_light;
+}
+.uk-light.theme-border-top {
+  border-top: $theme_border_light;
+}
+
+.uk-light .theme-border-right {
+  border-right: $theme_border_light;
+}
+.uk-light.theme-border-right {
+  border-right: $theme_border_light;
+}
+
+.uk-light .theme-border-bottom {
+  border-bottom: $theme_border_light;
+}
+.uk-light.theme-border-bottom {
+  border-bottom: $theme_border_light;
+}
+
+.uk-light .theme-border-left {
+  border-left: $theme_border_light;
+}
+.uk-light.theme-border-left {
+  border-left: $theme_border_light;
+}
