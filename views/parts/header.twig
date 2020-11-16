@@ -58,7 +58,8 @@
         </div>
         <ul class="uk-navbar-nav uk-hidden@m">
           <li>
-            <a class="uk-navbar-toggle pull-right-15" uk-navbar-toggle-icon uk-toggle href="#offcanvas-mobile-nav" title="Open the Mobile Menu"><span class="uk-hidden">Menu</span></a>
+            <a class="uk-navbar-toggle" uk-navbar-toggle-icon uk-toggle href="#offcanvas-mobile-nav" title="Open the Mobile Menu"><span class="uk-hidden">Menu</span></a>
+
           </li>
         </ul>
       </div>
@@ -67,51 +68,3 @@
   </div>
 </header>
 <!-- /header section -->
-
-<div id="modal-navbar-search" class="uk-modal-full" uk-modal>
-  <div class="uk-modal-dialog uk-flex uk-flex-center uk-flex-middle" uk-height-viewport>
-    <button class="uk-modal-close-full" type="button" uk-close></button>
-    <form class="uk-search uk-search-large" role="search" method="get" action="{{site.url}}">
-      <input id="header-search" class="uk-search-input uk-text-center playfair-display" type="search" placeholder="Start typing..." name="s" autocomplete="off" autofocus>
-      <input type="hidden" name="post_type" value="post">
-    </form>
-  </div>
-</div>
-<div id="offcanvas-mobile-nav" uk-offcanvas="flip: true; overlay: true">
-  <div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
-    <button class="uk-offcanvas-close uk-close uk-icon" uk-close type="button" title="Close the Mobile Menu"><span class="uk-hidden">Close</span></button>
-    <ul class="uk-nav uk-nav-default">
-      {% if has_menu_mobile %}
-        <li class="uk-nav-header uk-text-bold uk-margin-small-bottom">Menu</li>
-        {% for item in menu_mobile.get_items %}
-          {% if item.get_children %}
-            <li class="uk-parent {{ item.classes | join(' ') }}">
-              <a href="{{ item.get_link }}">{{ item.title }}</a>
-              <ul class="uk-nav-sub">
-                {% for child in item.get_children %}
-                  <li>
-                    <a href="{{ child.get_link }}">{{ child.title }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </li>
-          {% else %}
-            <li class="{{ item.classes | join(' ') }}">
-              <a href="{{ item.get_link }}">{{ item.title }}</a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      {% else %}
-        <li class="uk-nav-header uk-text-bold uk-margin-small-bottom">Menu</li>
-        <li>Add a menu to the Mobile Menu slot in Appearance > Menus.</li>
-      {% endif %}
-      <li class="uk-nav-divider uk-margin-top"></li>
-      <div class="uk-margin-top uk-position-z-index uk-position-relative">
-        <form class="uk-search uk-search-default uk-width-1-1" role="search" method="get" action="{{site.url}}">
-          <span class="uk-search-icon-flip" uk-search-icon></span>
-          <input class="uk-search-input" type="search" placeholder="Search..." id="SearchMobile" name="s" autocomplete="off">
-        </form>
-      </div>
-    </ul>
-  </div>
-</div>

@@ -6,29 +6,19 @@
   <section class="home-hero-section">
     <div class="">
       
-      {% if home_hero is not empty %}
-      <div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: fade; autoplay: true; autoplay-interval: 5000">
+        {% if home_hero is not empty %}
         
-        <ul class="uk-slideshow-items">
-          {% for post in home_hero %}
-          {% include 'tease-home-hero.twig' %}
-          {% endfor %}
-        </ul>
+        <div class="slideshow-container">
         
-        <script>
-            function slider_height_dynamically_set() {
-                activeslide = document.querySelector('.slider-item.uk-active');
-                slide_style = window.getComputedStyle(activeslide);
-                slide_container_height = slide_style.height
-                document.querySelector('.uk-slideshow-items').style.height = slide_container_height;
-            }
-            window.onload = function() {
-              slider_height_dynamically_set();
-            };
-        </script>
+            {% for post in home_hero %}
+            <div class="mySlides fade">
+            {% include 'tease-home-hero.twig' %}
+            </div>
+            {% endfor %}
+        
+        </div>
 
-      </div>
-      {% else %}
+        {% else %}
         <div class="uk-height-large uk-cover-container">
           <div class="uk-flex uk-flex-center uk-flex-middle uk-text-center uk-position-cover">
             <div>
@@ -37,7 +27,7 @@
             </div>
           </div>
         </div>
-      {% endif %}
+        {% endif %}
     
     </div>
   </section>

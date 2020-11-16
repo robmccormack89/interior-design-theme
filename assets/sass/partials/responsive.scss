@@ -28,10 +28,14 @@
 }
 
 /* custom breakpoints */
-@media only screen and (min-width:980px) {
-  
+@media only screen and (max-width:980px) {
+  .single-header-content {
+    padding: 30px;
+  }
 }
 
 @media only screen and (min-device-width:960px) {
-  
+  .home-hero-section .uk-slideshow-items {
+      min-height: 488px!important;
+  }
 }
